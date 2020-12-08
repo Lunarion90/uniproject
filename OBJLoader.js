@@ -12,7 +12,7 @@ import {
 	Points,
 	PointsMaterial,
 	Vector3
-} from "../three.module.js";
+} from "src/three.module.js";
 
 var OBJLoader = ( function () {
 
