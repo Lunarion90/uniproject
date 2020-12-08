@@ -2,7 +2,7 @@
 <html>
 <head>
 
-	<link rel="icon" type="image/png" href="/uniproject/favicon.png"/>
+	<link rel="icon" type="image/png" href="/uniproject/favicon.ico"/>
     <meta charset=utf-8>
     <title>Three.js Blender Geometry App</title>
     <style>
@@ -12,6 +12,10 @@
 </head>
 
 <body>
+
+<button type="button" onclick="window.loading('/img/javascript.png')">Javascript</button>
+<button type="button" onclick="window.loading('/img/typescript.png')">Typescript</button>
+<button type="button" onclick="window.loading('/img/assembly.png')">Assembly</button>
 
 <script src="/uniproject/three.min.js"> </script>
 <script type="module"> 
@@ -27,7 +31,7 @@
     let renderer;
     let light1;
 
-    window.loading = function() {
+    window.loading = function(imgName) {
         window.loader.load(
             // Forrás URL
             '/uniproject/gatling-gun.obj',
@@ -45,7 +49,7 @@
                     }
                 } );
 
-                init();
+                init(imgName);
             },
             // Betöltés előrehaladása közben hívódik
             function ( xhr ) {
@@ -57,7 +61,7 @@
             });
     }
 
-    function init() {
+    function init(imgName) {
         // Böngésző ablakméret lekérése és méretarány számítása
         HEIGHT = window.innerHeight;
         WIDTH = window.innerWidth;
@@ -80,7 +84,7 @@
 
         // Háttérkép létrehozása
         const loader = new THREE.TextureLoader();
-        let bgTexture = loader.load('papucsosjeti.jpeg');
+        let bgTexture = loader.load(imgName);
         scene.background = bgTexture;
 
         // Betöltött objektum színtérhez adása
@@ -127,7 +131,7 @@
         // scene 3D színtér képe a camera kamera szemszögéből.
         renderer.render(scene, camera);
     };
-}).then(() => { document.getElementsByTagName("body")[0].onload = window.loading(); });
+}).then(() => { document.getElementsByTagName("body")[0].onload = window.loading("/img/assembly.png"); });
 </script>
 </body>
 </html>
