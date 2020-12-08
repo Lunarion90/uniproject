@@ -15,10 +15,11 @@
 
 <script src="/uniproject/three.min.js"> </script>
 <script type="module"> 
-	import('/uniproject/OBJLoader.js').then(m => window.module = m).then(() => {window.loader = new window.module.OBJLoader()})
+	
 </script>
 
 <script>
+	import('/uniproject/OBJLoader.js').then(m => window.module = m).then(() => {window.loader = new window.module.OBJLoader()}).then(() => {
     // Globális változók
     let  WIDTH, HEIGHT, aspectRatio;
     let scene, camera;
@@ -126,7 +127,7 @@
         // scene 3D színtér képe a camera kamera szemszögéből.
         renderer.render(scene, camera);
     };
-
+});
 </script>
 </body>
 </html>
