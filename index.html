@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+
 	<link rel="icon" type="image/png" href="/uniproject/favicon.png"/>
     <meta charset=utf-8>
     <title>Three.js Blender Geometry App</title>
@@ -13,9 +14,7 @@
 <body onload="loader()">
 
 <script src="three.min.js "> </script>
-<script type="module">
-	import { OBJLoader } from '/uniproject/OBJLoader.js';
-</script>
+
 
 <script>
     // Globális változók
@@ -26,7 +25,7 @@
     let light1;
 
     function loader() {
-        const loader = new OBJLoader();
+        const loader = new THREE.ObjectLoader();
         loader.load(
             // Forrás URL
             'gatling-gun.obj',
