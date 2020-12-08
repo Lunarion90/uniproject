@@ -15,7 +15,7 @@
 
 <script src="/uniproject/three.min.js"> </script>
 <script type="module"> 
-	import('/uniproject/OBJLoader.js').then(m => module = m).then(() => {window.loader = new module.OBJLoader()})
+	import('/uniproject/OBJLoader.js').then(m => window.module = m).then(() => {window.loader = new window.module.OBJLoader()})
 </script>
 
 <script>
