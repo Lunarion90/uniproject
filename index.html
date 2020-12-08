@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-
-	<link rel="icon" type="image/png" href="/uniproject/favicon.ico"/>
+	<link rel="icon" type="image/ico" href="/uniproject/favicon.ico"/>
     <meta charset=utf-8>
     <title>Three.js Blender Geometry App</title>
     <style>
@@ -13,9 +12,9 @@
 
 <body>
 
-<button type="button" onclick="window.loading('/img/javascript.png')">Javascript</button>
-<button type="button" onclick="window.loading('/img/typescript.png')">Typescript</button>
-<button type="button" onclick="window.loading('/img/assembly.png')">Assembly</button>
+<button type="button" onclick="window.loading('/uniproject/img/javascript.png')">Javascript</button>
+<button type="button" onclick="window.loading('/uniproject/img/typescript.png')">Typescript</button>
+<button type="button" onclick="window.loading('/uniproject/img/assembly.png')">Assembly</button>
 
 <script src="/uniproject/three.min.js"> </script>
 <script type="module"> 
@@ -131,7 +130,7 @@
         // scene 3D színtér képe a camera kamera szemszögéből.
         renderer.render(scene, camera);
     };
-}).then(() => { document.getElementsByTagName("body")[0].onload = window.loading("/img/assembly.png"); });
+}).then(() => { document.getElementsByTagName("body")[0].onload = window.loading("/uniproject/img/assembly.png"); });
 </script>
 </body>
 </html>
