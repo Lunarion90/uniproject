@@ -86,10 +86,17 @@
         // Színtér létrehozása
         window.scene = new THREE.Scene();
 
-
+		// Háttérkép létrehozása
+        const loader = new THREE.TextureLoader();
+        let bgTexture = loader.load(imgName, function (texture){
+			window.bgHeight =  tex.image.height;
+			window.bgWidth =  tex.image.width;
+		});
+        window.scene.background = bgTexture;
+		
         // Renderer létrehozása és DOM-hoz adása
         window.renderer = new THREE.WebGLRenderer( { antialias: true } );
-        window.renderer.setSize( WIDTH, HEIGHT );
+        window.renderer.setSize( window.bgHeight, window.bgWidth );
         window.renderer.setClearColor( 0x202020 );
         document.body.appendChild( window.renderer.domElement );
 
@@ -97,14 +104,6 @@
         window.camera = new THREE.PerspectiveCamera( 75, aspectRatio, 0.1, 1000 );
         //window.camera.position.z = 25;
         window.camera.position.set( 25, 25, 25 );
-
-        // Háttérkép létrehozása
-        const loader = new THREE.TextureLoader();
-        let bgTexture = loader.load(imgName, function (texture){
-			window.bgHeight =  tex.image.height;
-			window.bgWidth =  tex.image.width;
-		});
-        window.scene.background = bgTexture;
 
         // Betöltött objektum színtérhez adása
         window.scene.add( window.meshLoaded );
