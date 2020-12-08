@@ -50,7 +50,7 @@
     window.loading = function(imgName) {
         window.loader.load(
             // Forrás URL
-            '/uniproject/ironman.obj',
+            '/uniproject/deer.obj',
             // Modell betöltése utáni függvény
             function ( loaded ) {
                 // A loaded egy THREE.Group objektum lesz, amelynek a gyermeke(i) a mesh(-ek)!
@@ -92,8 +92,8 @@
         window.scene.background = bgTexture;
 		
 		// Böngésző ablakméret lekérése és méretarány számítása
-        WIDTH = window.innerWidth;
-        HEIGHT = window.innerHeight;
+        WIDTH = window.bgWidth;
+        HEIGHT = window.bgHeight;
         aspectRatio = WIDTH / HEIGHT;
 		
         // Renderer létrehozása és DOM-hoz adása
@@ -184,6 +184,19 @@ function changeBg(imgName){
 		window.bgHeight =  texture.image.height;
 		window.bgWidth =  texture.image.width;
 	})
+	if (window.bgWidth < window.innerWidth){
+			if (window.bgHeight < window.innerHeight){
+				window.renderer.setSize(window.bgWidth, window.bgHeight);
+			} else {
+				window.renderer.setSize(window.bgWidth/(window.bgHeight/window.innerHeight), window.innerHeight)
+			}
+		} else {
+			if (window.bgHeight < window.innerHeight){
+				window.renderer.setSize(window.innerWidth, window.bgHeight/(window.bgWidth/window.innerHeight))
+			} else {
+				window.renderer.setSize(window.innerWidth, window.innerHeight);
+			}
+		}
 }
 </script>
 </body>
