@@ -15,7 +15,7 @@
 
 <script src="/uniproject/three.min.js"> </script>
 <script type="module"> 
-	import { OBJLoader } from '/uniproject/OBJLoader.js';
+	import('/uniproject/OBJLoader.js').then(m => module = m)
 </script>
 
 <script>
@@ -27,10 +27,10 @@
     let light1;
 
     function loader() {
-        const loader = new OBJLoader();
+        const loader = new module.OBJLoader();
         loader.load(
             // Forrás URL
-            'gatling-gun.obj',
+            '/uniproject/gatling-gun.obj',
             // Modell betöltése utáni függvény
             function ( loaded ) {
                 // A loaded egy THREE.Group objektum lesz, amelynek a gyermeke(i) a mesh(-ek)!
