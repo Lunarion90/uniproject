@@ -13,8 +13,8 @@
 
 <body onload="loader()">
 
-<script src="three.min.js "> </script>
-
+<script src="/uniproject/three.min.js "> </script>
+<script type="module" src="/uniproject/OBJLoader.js "> </script>
 
 <script>
     // Globális változók
@@ -25,7 +25,7 @@
     let light1;
 
     function loader() {
-        const loader = new THREE.ObjectLoader();
+        const loader = new OBJLoader();
         loader.load(
             // Forrás URL
             'gatling-gun.obj',
