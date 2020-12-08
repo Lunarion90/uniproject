@@ -88,6 +88,7 @@
         let bgTexture = loader.load(imgName, function (texture){
 			window.bgHeight =  texture.image.height;
 			window.bgWidth =  texture.image.width;
+			console.log("1: " + window.bgHeight);
 		});
         window.scene.background = bgTexture;
 		
@@ -95,6 +96,7 @@
         WIDTH = window.bgWidth;
         HEIGHT = window.bgHeight;
         aspectRatio = WIDTH / HEIGHT;
+			console.log("2: " + WIDTH);
 		
         // Renderer létrehozása és DOM-hoz adása
         window.renderer = new THREE.WebGLRenderer( { antialias: true } );
@@ -111,6 +113,7 @@
 				window.renderer.setSize(window.innerWidth, window.innerHeight);
 			}
 		}
+			console.log("3: " + window.bgHeight);
         window.renderer.setClearColor( 0x202020 );
         document.body.appendChild( window.renderer.domElement );
 
@@ -144,6 +147,7 @@
     }
 
     function handleWindowResize() {
+			console.log("4: " + window.bgHeight);
         // Az ablak átméretezése esetén a kamera vetítési paraméterek újraszámolása
         HEIGHT = window.bgHeight;
         WIDTH = window.bgWidth;
@@ -165,6 +169,7 @@
     }
 
     let render = function () {
+			console.log("5: " + window.bgHeight);
         // Újabb képkocka rajzolásának kérése.
         // Maximálisan 60 FPS-t biztosít a rendszer.
         requestAnimationFrame(render);
@@ -180,6 +185,7 @@
 }).then(() => { document.getElementsByTagName("body")[0].onload = window.loading("/uniproject/img/assembly.png"); });
 
 function changeBg(imgName){
+			console.log("6: " + window.bgHeight);
 	window.scene.background = new THREE.TextureLoader().load('/uniproject/img/'+imgName+'.png', function (texture){
 		window.bgHeight =  texture.image.height;
 		window.bgWidth =  texture.image.width;
