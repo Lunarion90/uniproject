@@ -79,6 +79,8 @@
 
     function init(imgName) {
         
+		window.bgHeight = 934;
+		window.bgWidth = 1380;
 
         // Színtér létrehozása
         window.scene = new THREE.Scene();
@@ -92,8 +94,8 @@
         window.scene.background = bgTexture;
 		
 		// Böngésző ablakméret lekérése és méretarány számítása
-        WIDTH = 1380;
-        HEIGHT = 934;
+        WIDTH = window.bgWidth;
+        HEIGHT = window.bgHeight;
         aspectRatio = WIDTH / HEIGHT;
 		
         // Renderer létrehozása és DOM-hoz adása
