@@ -15,7 +15,7 @@
 
 <script src="/uniproject/three.min.js"> </script>
 <script type="module"> 
-	import('/uniproject/OBJLoader.js').then(m => module = m)
+	import('/uniproject/OBJLoader.js').then(m => module = m).then(() => {window.loader = new module.OBJLoader()})
 </script>
 
 <script>
@@ -27,8 +27,7 @@
     let light1;
 
     function loader() {
-        const loader = new module.OBJLoader();
-        loader.load(
+        window.loader.load(
             // Forrás URL
             '/uniproject/gatling-gun.obj',
             // Modell betöltése utáni függvény
