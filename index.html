@@ -12,15 +12,11 @@
 
 <body>
 
-<button type="button" onclick="window.loading('/uniproject/img/javascript.png')">Javascript</button>
-<button type="button" onclick="window.loading('/uniproject/img/c.png')">C</button>
-<button type="button" onclick="window.loading('/uniproject/img/assembly.png')">Assembly</button>
+<button type="button" onclick="changeBg('javascript')">Javascript</button>
+<button type="button" onclick="changeBg('c')">C</button>
+<button type="button" onclick="changeBg('assembly')">Assembly</button>
 
 <script src="/uniproject/three.min.js"> </script>
-<script type="module"> 
-	
-</script>
-
 <script>
 	import('/uniproject/OBJLoader.js').then(m => window.module = m).then(() => {window.loader = new window.module.OBJLoader()}).then(() => {
     // Globális változók
@@ -83,7 +79,10 @@
 
         // Háttérkép létrehozása
         const loader = new THREE.TextureLoader();
-        let bgTexture = loader.load(imgName);
+        let bgTexture = loader.load(imgName, function (texture){
+			window.bgHeight =  tex.image.height;
+			window.bgWidth =  tex.image.width;
+		});
         window.scene.background = bgTexture;
 
         // Betöltött objektum színtérhez adása
@@ -101,7 +100,7 @@
         //window.scene.add( sLH1 );
 
         // Az ablak átméretezése esetén visszahívható függvény megadása
-        window.addEventListener( 'resize', handleWindowResize, false );
+        /*window.addEventListener( 'resize', handleWindowResize, false );*/
 
         window.camera.lookAt( window.scene.position );
         // Első képkocka rajzolása
@@ -131,6 +130,13 @@
         window.renderer.render(window.scene, window.camera);
     };
 }).then(() => { document.getElementsByTagName("body")[0].onload = window.loading("/uniproject/img/assembly.png"); });
+
+function changeBg(imgName){
+	window.scene.background = new THREE.TextureLoader().load('/uniproject/img/'+imgName+'.png', function (texture){
+		window.bgHeight =  tex.image.height;
+		window.bgWidth =  tex.image.width;
+	})
+}
 </script>
 </body>
 </html>
