@@ -89,8 +89,8 @@
 		// Háttérkép létrehozása
         const loader = new THREE.TextureLoader();
         let bgTexture = loader.load(imgName, function (texture){
-			window.bgHeight =  tex.image.height;
-			window.bgWidth =  tex.image.width;
+			window.bgHeight =  texture.image.height;
+			window.bgWidth =  texture.image.width;
 		});
         window.scene.background = bgTexture;
 		
