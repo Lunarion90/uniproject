@@ -78,10 +78,7 @@
     }
 
     function init(imgName) {
-        // Böngésző ablakméret lekérése és méretarány számítása
-        HEIGHT = window.innerHeight;
-        WIDTH = window.innerWidth;
-        aspectRatio = WIDTH / HEIGHT;
+        
 
         // Színtér létrehozása
         window.scene = new THREE.Scene();
@@ -94,9 +91,14 @@
 		});
         window.scene.background = bgTexture;
 		
+		// Böngésző ablakméret lekérése és méretarány számítása
+        window.bgHeight = window.innerHeight;
+        window.bgWidth = window.innerWidth;
+        aspectRatio = WIDTH / HEIGHT;
+		
         // Renderer létrehozása és DOM-hoz adása
         window.renderer = new THREE.WebGLRenderer( { antialias: true } );
-        window.renderer.setSize( window.bgHeight, window.bgWidth );
+        window.renderer.setSize( WIDTH, HEIGHT );
         window.renderer.setClearColor( 0x202020 );
         document.body.appendChild( window.renderer.domElement );
 
@@ -104,6 +106,8 @@
         window.camera = new THREE.PerspectiveCamera( 75, aspectRatio, 0.1, 1000 );
         //window.camera.position.z = 25;
         window.camera.position.set( 25, 25, 25 );
+
+        
 
         // Betöltött objektum színtérhez adása
         window.scene.add( window.meshLoaded );
