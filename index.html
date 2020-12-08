@@ -50,7 +50,7 @@
     window.loading = function(imgName) {
         window.loader.load(
             // Forrás URL
-            '/uniproject/gatling-gun.obj',
+            '/uniproject/ironman.obj',
             // Modell betöltése utáni függvény
             function ( loaded ) {
                 // A loaded egy THREE.Group objektum lesz, amelynek a gyermeke(i) a mesh(-ek)!
@@ -92,13 +92,25 @@
         window.scene.background = bgTexture;
 		
 		// Böngésző ablakméret lekérése és méretarány számítása
-        WIDTH = window.bgHeight;
-        HEIGHT = window.bgWidth;
+        WIDTH = window.innerWidth;
+        HEIGHT = window.innerHeight;
         aspectRatio = WIDTH / HEIGHT;
 		
         // Renderer létrehozása és DOM-hoz adása
         window.renderer = new THREE.WebGLRenderer( { antialias: true } );
-        window.renderer.setSize( WIDTH, HEIGHT );
+        if (bgWidth < innerWidth){
+			if (bgHeight < innerHeight){
+				window.renderer.setSize(bgWidth, bgHeight);
+			} else {
+				window.renderer.setSize(bgWidth/(bgHeight/innerHeight), innerHeight)
+			}
+		} else {
+			if (bgHeight < innerHeight){
+				window.renderer.setSize(innerWidth, bgHeight/(bgWidth/innerHeight))
+			} else {
+				window.renderer.setSize(innerWidth, innerHeight);
+			}
+		}
         window.renderer.setClearColor( 0x202020 );
         document.body.appendChild( window.renderer.domElement );
 
@@ -133,9 +145,21 @@
 
     function handleWindowResize() {
         // Az ablak átméretezése esetén a kamera vetítési paraméterek újraszámolása
-        HEIGHT = window.innerHeight;
-        WIDTH = window.innerWidth;
-        window.renderer.setSize( WIDTH, HEIGHT );
+        HEIGHT = window.bgHeight;
+        WIDTH = window.bgWidth;
+        if (bgWidth < innerWidth){
+			if (bgHeight < innerHeight){
+				window.renderer.setSize(bgWidth, bgHeight);
+			} else {
+				window.renderer.setSize(bgWidth/(bgHeight/innerHeight), innerHeight)
+			}
+		} else {
+			if (bgHeight < innerHeight){
+				window.renderer.setSize(innerWidth, bgHeight/(bgWidth/innerHeight))
+			} else {
+				window.renderer.setSize(innerWidth, innerHeight);
+			}
+		}
         window.camera.aspect = WIDTH / HEIGHT;
         window.camera.updateProjectionMatrix();
     }
