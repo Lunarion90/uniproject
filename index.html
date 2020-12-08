@@ -5,8 +5,29 @@
     <meta charset=utf-8>
     <title>Three.js Blender Geometry App</title>
     <style>
-        body { margin: 0; overflow: hidden }
-        canvas { width: 100%; height: 100% }
+        body { 
+			margin: 0; 
+			overflow: hidden 
+		}
+        canvas { 
+			width: 80%; 
+			margin: auto; 
+		}
+		
+        button {
+			background-color: #4CAF50;
+	  		border: 1px solid black;
+			color: white;
+			padding: 15px 32px;
+			position: relative;
+			left: 30px;
+			top: 30px;
+			text-align: center;
+			text-decoration: none;
+			display: inline-block;
+			font-size: 16px;
+		}
+    
     </style>
 </head>
 
@@ -100,7 +121,7 @@
         //window.scene.add( sLH1 );
 
         // Az ablak átméretezése esetén visszahívható függvény megadása
-        /*window.addEventListener( 'resize', handleWindowResize, false );*/
+        window.addEventListener( 'resize', handleWindowResize, false );
 
         window.camera.lookAt( window.scene.position );
         // Első képkocka rajzolása
@@ -133,8 +154,8 @@
 
 function changeBg(imgName){
 	window.scene.background = new THREE.TextureLoader().load('/uniproject/img/'+imgName+'.png', function (texture){
-		window.bgHeight =  tex.image.height;
-		window.bgWidth =  tex.image.width;
+		window.bgHeight =  texture.image.height;
+		window.bgWidth =  texture.image.width;
 	})
 }
 </script>
