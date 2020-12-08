@@ -98,17 +98,17 @@
 		
         // Renderer létrehozása és DOM-hoz adása
         window.renderer = new THREE.WebGLRenderer( { antialias: true } );
-        if (bgWidth < innerWidth){
-			if (bgHeight < innerHeight){
-				window.renderer.setSize(bgWidth, bgHeight);
+        if (window.bgWidth < window.innerWidth){
+			if (window.bgHeight < window.innerHeight){
+				window.renderer.setSize(window.bgWidth, window.bgHeight);
 			} else {
-				window.renderer.setSize(bgWidth/(bgHeight/innerHeight), innerHeight)
+				window.renderer.setSize(window.bgWidth/(window.bgHeight/window.innerHeight), window.innerHeight)
 			}
 		} else {
-			if (bgHeight < innerHeight){
-				window.renderer.setSize(innerWidth, bgHeight/(bgWidth/innerHeight))
+			if (window.bgHeight < window.innerHeight){
+				window.renderer.setSize(window.innerWidth, window.bgHeight/(window.bgWidth/window.innerHeight))
 			} else {
-				window.renderer.setSize(innerWidth, innerHeight);
+				window.renderer.setSize(window.innerWidth, window.innerHeight);
 			}
 		}
         window.renderer.setClearColor( 0x202020 );
@@ -147,17 +147,17 @@
         // Az ablak átméretezése esetén a kamera vetítési paraméterek újraszámolása
         HEIGHT = window.bgHeight;
         WIDTH = window.bgWidth;
-        if (bgWidth < innerWidth){
-			if (bgHeight < innerHeight){
-				window.renderer.setSize(bgWidth, bgHeight);
+        if (window.bgWidth < window.innerWidth){
+			if (window.bgHeight < window.innerHeight){
+				window.renderer.setSize(window.bgWidth, window.bgHeight);
 			} else {
-				window.renderer.setSize(bgWidth/(bgHeight/innerHeight), innerHeight)
+				window.renderer.setSize(window.bgWidth/(window.bgHeight/window.innerHeight), window.innerHeight)
 			}
 		} else {
-			if (bgHeight < innerHeight){
-				window.renderer.setSize(innerWidth, bgHeight/(bgWidth/innerHeight))
+			if (window.bgHeight < window.innerHeight){
+				window.renderer.setSize(window.innerWidth, window.bgHeight/(window.bgWidth/window.innerHeight))
 			} else {
-				window.renderer.setSize(innerWidth, innerHeight);
+				window.renderer.setSize(window.innerWidth, window.innerHeight);
 			}
 		}
         window.camera.aspect = WIDTH / HEIGHT;
